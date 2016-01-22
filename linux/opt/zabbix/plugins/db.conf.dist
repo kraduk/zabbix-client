@@ -1,0 +1,5 @@
+<?php
+$mysql_user = 'root';
+$mysql_pass = 'MKiagpnt';
+$mysql_port = 3306;
+?>
