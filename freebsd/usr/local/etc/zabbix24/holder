@@ -1,0 +1,2 @@
+Either symlink the config file to /opt/zabbix/etc/agentd.conf 
+or define

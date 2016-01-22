@@ -1,0 +1,45 @@
+#!/bin/sh
+
+# PROVIDE: zabbix_agentd
+# REQUIRE: DAEMON
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf to
+# enable zabbix_agentd:
+#
+# zabbix_agentd_enable (bool): Set to NO by default.  Set it to YES to
+#         enable zabbix_agentd.
+#
+
+
+. /etc/rc.subr
+
+name="zabbix_agentd"
+rcvar=zabbix_agentd_enable
+start_precmd="zabbix_precmd"
+
+zabbix_precmd()
+{
+	touch /tmp/p
+	if [ -e $zabbix_agentd_pre ] ; then
+		. $zabbix_agentd_pre
+	fi
+
+	if [ "$zabbix_agentd_conf" == "" ] ; then
+		command="/usr/local/sbin/${name}"
+	fi
+}
+
+# read configuration and set defaultsc
+load_rc_config "$name"
+: ${zabbix_agentd_enable="NO"}
+: ${zabbix_agentd_conf:=}
+: ${zabbix_agentd_pre:=/usr/local/etc/zabbix24/${name}.pre.sh}
+
+
+command="/usr/local/sbin/${name}"
+required_files=${zabbix_agentd_conf}
+
+
+run_rc_command "$1"
+
