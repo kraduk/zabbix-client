@@ -9,7 +9,16 @@
 #
 # zabbix_agentd_enable (bool): Set to NO by default.  Set it to YES to
 #         enable zabbix_agentd.
+# 
+# alturnate config file set the following
+# 	  zabbix_agentd_flags
 #
+# want a precommand define
+#	  zabbix_agentd_pre
+#
+#
+
+
 
 
 . /etc/rc.subr
