@@ -1,6 +1,0 @@
-ifconfig mgmt | awk '/inet / {gsub(/addr:/,"",$2); print "ListenIP="$2}' > /etc/zabbix/agentd.conf.d/listen.conf 
-conf="/etc/zabbix/agentd.conf"
-CONF="/etc/zabbix/agentd.conf"
-echo "Hostname="`hostname| tr 'A-Z' 'a-z'` | sed -e "s/://g" > /etc/zabbix/agentd.conf.d/host.conf
-[ -e /etc/sysconfig/zabbix-agent.local ] && . /etc/sysconfig/zabbix-agent.local
-
