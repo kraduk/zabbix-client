@@ -1,0 +1,1 @@
+DAEMON_OPTS="-- -c /etc/zabbix/agentd.conf"
